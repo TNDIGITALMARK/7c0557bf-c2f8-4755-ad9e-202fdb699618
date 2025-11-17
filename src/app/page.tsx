@@ -56,6 +56,12 @@ export default function PantryCafePage() {
               Menu
             </a>
             <a
+              href="/reservations"
+              className="text-[hsl(var(--pantry-cream))] font-bold px-3 py-2 hover:text-[hsl(var(--pantry-orange))] transition-colors"
+            >
+              Cake Orders
+            </a>
+            <a
               href="#gallery"
               className="text-[hsl(var(--pantry-cream))] font-bold px-3 py-2 hover:text-[hsl(var(--pantry-orange))] transition-colors"
             >
@@ -90,12 +96,18 @@ export default function PantryCafePage() {
           </p>
         </div>
 
-        <div className="text-center">
+        <div className="text-center flex gap-4 justify-center">
           <a
             href="#menu"
             className="inline-block bg-[hsl(var(--pantry-orange))] text-white font-bold px-8 py-3 rounded-lg hover:bg-[hsl(var(--pantry-navy))] transition-colors shadow-md"
           >
             View Menu
+          </a>
+          <a
+            href="/reservations"
+            className="inline-block bg-[hsl(var(--pantry-navy))] text-white font-bold px-8 py-3 rounded-lg hover:bg-[hsl(var(--pantry-orange))] transition-colors shadow-md"
+          >
+            Order Custom Cake
           </a>
         </div>
       </section>
