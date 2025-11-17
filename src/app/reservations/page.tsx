@@ -10,7 +10,7 @@ export default function ReservationsPage() {
       {/* Header with Hero Image */}
       <header className="relative w-full h-[400px]">
         <Image
-          src="/generated/hero-cafe-exterior.png"
+          src="/generated/cafe-exterior-real.jpg"
           alt="The Pantry Café - Custom Cakes"
           fill
           className="object-cover"

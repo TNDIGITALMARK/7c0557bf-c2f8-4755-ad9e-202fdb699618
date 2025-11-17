@@ -24,7 +24,7 @@ export default function PantryCafePage() {
       {/* Header with Hero Image */}
       <header className="relative w-full h-[500px] md:h-[600px]">
         <Image
-          src="/generated/hero-cafe-exterior.png"
+          src="/generated/cafe-exterior-real.jpg"
           alt="The Pantry Café - Aliwal North Front"
           fill
           className="object-cover"
@@ -188,7 +188,7 @@ export default function PantryCafePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             <div className="relative h-64 md:h-80 overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow">
               <Image
-                src="/generated/gallery-coffee.png"
+                src="/generated/gallery-cappuccino.jpg"
                 alt="Beautiful latte art at The Pantry"
                 fill
                 className="object-cover"
@@ -196,7 +196,7 @@ export default function PantryCafePage() {
             </div>
             <div className="relative h-64 md:h-80 overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow">
               <Image
-                src="/generated/gallery-salad.png"
+                src="/generated/gallery-fresh-salad.jpg"
                 alt="Fresh garden salad"
                 fill
                 className="object-cover"
@@ -204,8 +204,32 @@ export default function PantryCafePage() {
             </div>
             <div className="relative h-64 md:h-80 overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow">
               <Image
-                src="/generated/gallery-pancakes.png"
+                src="/generated/gallery-pancake-stack.jpg"
                 alt="Delicious pancake stack"
+                fill
+                className="object-cover"
+              />
+            </div>
+            <div className="relative h-64 md:h-80 overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow">
+              <Image
+                src="/generated/gallery-pastries.jpg"
+                alt="Fresh baked pastries and goods"
+                fill
+                className="object-cover"
+              />
+            </div>
+            <div className="relative h-64 md:h-80 overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow">
+              <Image
+                src="/generated/gallery-breakfast-plate.jpg"
+                alt="Gourmet breakfast plate"
+                fill
+                className="object-cover"
+              />
+            </div>
+            <div className="relative h-64 md:h-80 overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow">
+              <Image
+                src="/generated/gallery-interior.jpg"
+                alt="Cozy café interior"
                 fill
                 className="object-cover"
               />
