@@ -1,8 +1,14 @@
+'use client'
+
 export const dynamic = 'force-dynamic'
 
 import Image from 'next/image'
+import { useState } from 'react'
+import { OrderTypeSelector, type OrderType } from '@/components/order-type-selector'
 
 export default function PantryCafePage() {
+  const [orderType, setOrderType] = useState<OrderType>('pickup')
+
   return (
     <div className="min-h-screen">
       {/* Header with Hero Image */}
@@ -87,7 +93,12 @@ export default function PantryCafePage() {
       {/* Menu Section */}
       <section id="menu" className="py-16 px-6 bg-white">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-center text-3xl md:text-4xl font-bold mb-12">Our Menu</h2>
+          <h2 className="text-center text-3xl md:text-4xl font-bold mb-8">Our Menu</h2>
+
+          {/* Order Type Selector */}
+          <div className="max-w-2xl mx-auto mb-12">
+            <OrderTypeSelector value={orderType} onChange={setOrderType} />
+          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Menu Card 1 */}
@@ -136,6 +147,29 @@ export default function PantryCafePage() {
           <div className="text-center mt-12">
             <div className="inline-block bg-[hsl(var(--pantry-orange))] text-white font-bold px-6 py-2 rounded-full">
               Our Specials
+            </div>
+            <div className="mt-6 text-base text-[hsl(var(--muted-foreground))]">
+              {orderType === 'delivery' ? (
+                <p>
+                  <span className="inline-flex items-center gap-2 text-[hsl(var(--pantry-navy))] font-bold">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    Delivery Selected
+                  </span>
+                  {' '}— Your order will be delivered to your location
+                </p>
+              ) : (
+                <p>
+                  <span className="inline-flex items-center gap-2 text-[hsl(var(--pantry-navy))] font-bold">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                    Pickup Selected
+                  </span>
+                  {' '}— Pick up your order at our café
+                </p>
+              )}
             </div>
           </div>
         </div>
