@@ -50,38 +50,59 @@ export default function PantryCafePage() {
       {/* Mobile Menu */}
       <MobileMenu />
 
-      {/* Header with Hero Image */}
-      <header className="relative w-full h-[500px] md:h-[600px]">
+      {/* Header with Hero Image - Instagram Style */}
+      <header className="relative w-full h-[70vh] md:h-[80vh] min-h-[600px]">
         <Image
           src="/generated/cafe-exterior-real.jpg"
-          alt="The Pantry Café - Aliwal North Front"
+          alt="The Pantry Café - Aliwal North"
           fill
-          className="object-cover"
+          className="object-cover brightness-90"
           priority
+          quality={100}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="text-center text-white z-10 max-w-3xl px-6">
-            <h1 className="text-5xl md:text-6xl font-bold mb-4 text-white drop-shadow-2xl">
+        {/* Elegant gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60" />
+
+        {/* Header content */}
+        <div className="absolute inset-0 flex flex-col items-center justify-center px-4">
+          <div className="text-center text-white z-10 max-w-4xl">
+            {/* Main title with enhanced styling */}
+            <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold mb-6 text-white drop-shadow-[0_4px_20px_rgba(0,0,0,0.8)] tracking-tight leading-none">
               The Pantry Café
             </h1>
-            <p className="text-xl md:text-2xl text-white/95 mb-8 drop-shadow-lg">
+
+            {/* Subtitle */}
+            <p className="text-2xl md:text-3xl lg:text-4xl text-white/95 mb-4 drop-shadow-[0_2px_15px_rgba(0,0,0,0.7)] font-normal">
+              Aliwal North
+            </p>
+
+            {/* Tagline */}
+            <p className="text-lg md:text-xl text-white/90 mb-10 drop-shadow-[0_2px_10px_rgba(0,0,0,0.6)] max-w-2xl mx-auto font-light italic">
               Where Every Bite Tells a Story
             </p>
-            <div className="flex flex-wrap gap-4 justify-center">
+
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <a
                 href="#menu"
-                className="inline-block bg-[hsl(var(--pantry-orange))] text-white font-bold px-8 py-3 rounded-lg hover:bg-[hsl(var(--pantry-orange))]/90 transition-all shadow-xl hover:scale-105"
+                className="w-full sm:w-auto inline-block bg-[hsl(var(--pantry-orange))] text-white font-bold px-10 py-4 rounded-lg hover:bg-[hsl(var(--pantry-orange))]/90 transition-all shadow-[0_4px_20px_rgba(229,106,42,0.4)] hover:scale-105 hover:shadow-[0_6px_30px_rgba(229,106,42,0.6)] text-lg"
               >
                 View Menu
               </a>
               <a
                 href="/reservations"
-                className="inline-block bg-white text-[hsl(var(--pantry-navy))] font-bold px-8 py-3 rounded-lg hover:bg-gray-100 transition-all shadow-xl hover:scale-105"
+                className="w-full sm:w-auto inline-block bg-white/95 backdrop-blur-sm text-[hsl(var(--pantry-navy))] font-bold px-10 py-4 rounded-lg hover:bg-white transition-all shadow-[0_4px_20px_rgba(255,255,255,0.3)] hover:scale-105 hover:shadow-[0_6px_30px_rgba(255,255,255,0.5)] text-lg"
               >
                 Order Custom Cake
               </a>
             </div>
+          </div>
+        </div>
+
+        {/* Scroll indicator */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+          <div className="w-6 h-10 border-2 border-white/50 rounded-full flex items-start justify-center p-2">
+            <div className="w-1.5 h-3 bg-white/70 rounded-full"></div>
           </div>
         </div>
       </header>
