@@ -3,10 +3,14 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { CakeReservationForm } from '@/components/cake-reservation-form';
+import { MobileMenu } from '@/components/mobile-menu';
 
 export default function ReservationsPage() {
   return (
     <div className="min-h-screen bg-[hsl(var(--pantry-cream))]">
+      {/* Mobile Menu */}
+      <MobileMenu />
+
       {/* Header with Hero Image */}
       <header className="relative w-full h-[400px]">
         <Image
@@ -25,8 +29,8 @@ export default function ReservationsPage() {
         </div>
       </header>
 
-      {/* Navigation */}
-      <nav className="bg-[hsl(var(--pantry-navy))] sticky top-0 z-50 shadow-md">
+      {/* Navigation - Desktop Only */}
+      <nav className="hidden md:block bg-[hsl(var(--pantry-navy))] sticky top-0 z-50 shadow-md">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex justify-center items-center gap-8 py-4">
             <Link

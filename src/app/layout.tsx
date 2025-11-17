@@ -15,8 +15,18 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  title: "The Pantry Café - Aliwal North",
-  description: "Experience authentic Eastern Cape flavours at The Pantry Café. Fresh, locally-sourced ingredients, delicious pastries, and hearty meals. 73 Somerset Street, Aliwal North.",
+  title: "The Pantry Café - Aliwal North | Coffee, Breakfast & Custom Cakes",
+  description: "Experience authentic Eastern Cape flavours at The Pantry Café. Fresh, locally-sourced ingredients, delicious pastries, hearty meals, and custom cakes. Visit us at 73 Somerset Street, Aliwal North. Open Mon-Sat. Custom cake orders available.",
+  keywords: ["cafe", "coffee", "breakfast", "lunch", "bakery", "custom cakes", "Aliwal North", "Eastern Cape", "restaurant", "fresh food", "local ingredients"],
+  authors: [{ name: "The Pantry Café" }],
+  openGraph: {
+    title: "The Pantry Café - Aliwal North",
+    description: "Experience authentic Eastern Cape flavours. Fresh coffee, delicious meals, and custom cakes.",
+    type: "website",
+    locale: "en_ZA",
+    url: "https://pantrykafe.co.za",
+    siteName: "The Pantry Café",
+  },
 };
 
 export default function RootLayout({
