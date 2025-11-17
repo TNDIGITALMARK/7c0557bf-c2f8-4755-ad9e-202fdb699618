@@ -3,11 +3,21 @@
 export const dynamic = 'force-dynamic'
 
 import Image from 'next/image'
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import { OrderTypeSelector, type OrderType } from '@/components/order-type-selector'
+import { MenuCategorySelector } from '@/components/menu-category-selector'
+import { menuItems, type MenuCategory } from '@/lib/menu-data'
 
 export default function PantryCafePage() {
   const [orderType, setOrderType] = useState<OrderType>('pickup')
+  const [selectedCategory, setSelectedCategory] = useState<MenuCategory>('all')
+
+  const filteredMenuItems = useMemo(() => {
+    if (selectedCategory === 'all') {
+      return menuItems
+    }
+    return menuItems.filter(item => item.category === selectedCategory)
+  }, [selectedCategory])
 
   return (
     <div className="min-h-screen">
@@ -96,53 +106,36 @@ export default function PantryCafePage() {
           <h2 className="text-center text-3xl md:text-4xl font-bold mb-8">Our Menu</h2>
 
           {/* Order Type Selector */}
-          <div className="max-w-2xl mx-auto mb-12">
+          <div className="max-w-2xl mx-auto mb-8">
             <OrderTypeSelector value={orderType} onChange={setOrderType} />
           </div>
 
+          {/* Menu Category Selector */}
+          <MenuCategorySelector value={selectedCategory} onChange={setSelectedCategory} />
+
+          {/* Menu Items Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Menu Card 1 */}
-            <div className="bg-[hsl(var(--pantry-cream))] rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow">
-              <h3 className="text-xl font-bold mb-3">Chicken & Mushroom Pie</h3>
-              <p className="text-base mb-4">Rich, creamy filling in a buttery pastry crust.</p>
-              <p className="text-[hsl(var(--pantry-orange))] font-bold text-lg">R45.00</p>
-            </div>
-
-            {/* Menu Card 2 */}
-            <div className="bg-[hsl(var(--pantry-cream))] rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow">
-              <h3 className="text-xl font-bold mb-3">Breakfast Platter</h3>
-              <p className="text-base mb-4">Eggs, bacon, sausage, and fresh bread with preserves.</p>
-              <p className="text-[hsl(var(--pantry-orange))] font-bold text-lg">R75.00</p>
-            </div>
-
-            {/* Menu Card 3 */}
-            <div className="bg-[hsl(var(--pantry-cream))] rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow">
-              <h3 className="text-xl font-bold mb-3">Freshly Baked Scones</h3>
-              <p className="text-base mb-4">Served with jam and cream, perfect with tea or coffee.</p>
-              <p className="text-[hsl(var(--pantry-orange))] font-bold text-lg">R35.00</p>
-            </div>
-
-            {/* Menu Card 4 */}
-            <div className="bg-[hsl(var(--pantry-cream))] rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow">
-              <h3 className="text-xl font-bold mb-3">Garden Salad</h3>
-              <p className="text-base mb-4">Fresh greens with grilled chicken, seasonal vegetables, and house dressing.</p>
-              <p className="text-[hsl(var(--pantry-orange))] font-bold text-lg">R65.00</p>
-            </div>
-
-            {/* Menu Card 5 */}
-            <div className="bg-[hsl(var(--pantry-cream))] rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow">
-              <h3 className="text-xl font-bold mb-3">Artisan Coffee</h3>
-              <p className="text-base mb-4">Premium espresso-based drinks with beautiful latte art.</p>
-              <p className="text-[hsl(var(--pantry-orange))] font-bold text-lg">R30.00</p>
-            </div>
-
-            {/* Menu Card 6 */}
-            <div className="bg-[hsl(var(--pantry-cream))] rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow">
-              <h3 className="text-xl font-bold mb-3">Pancake Stack</h3>
-              <p className="text-base mb-4">Fluffy pancakes with maple syrup, fresh berries, and whipped cream.</p>
-              <p className="text-[hsl(var(--pantry-orange))] font-bold text-lg">R55.00</p>
-            </div>
+            {filteredMenuItems.map((item) => (
+              <div
+                key={item.id}
+                className="bg-[hsl(var(--pantry-cream))] rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow"
+              >
+                <h3 className="text-xl font-bold mb-3">{item.name}</h3>
+                <p className="text-base mb-4">{item.description}</p>
+                <p className="text-[hsl(var(--pantry-orange))] font-bold text-lg">
+                  R{item.price.toFixed(2)}
+                </p>
+              </div>
+            ))}
           </div>
+
+          {filteredMenuItems.length === 0 && (
+            <div className="text-center py-12">
+              <p className="text-lg text-[hsl(var(--muted-foreground))]">
+                No items found in this category.
+              </p>
+            </div>
+          )}
 
           <div className="text-center mt-12">
             <div className="inline-block bg-[hsl(var(--pantry-orange))] text-white font-bold px-6 py-2 rounded-full">
